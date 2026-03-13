@@ -1,0 +1,36 @@
+name: Validate Data
+
+on:
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'registry.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - run: python validate.py
+
+  auto-merge:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: startsWith(github.head_ref, 'data-update/')
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Auto-merge data update PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge ${{ github.event.pull_request.number }} \
+            --squash \
+            --auto \
+            --delete-branch
