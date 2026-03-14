@@ -64,12 +64,12 @@ def scrape_state(state_code, state_config, dry_run=False):
     """
     from .state import update_state_legislators
 
-    source_url = state_config.get("openstatesUrl")
+    source_url = state_config.get("openStatesUrl")
     if not source_url:
-        print(f"  No openstatesUrl configured for {state_code}, skipping state scrape")
+        print(f"  No openStatesUrl configured for {state_code}, skipping state scrape")
         return
 
-    output_dir = os.path.join(PROJECT_ROOT, "data", state_code)
+    output_dir = os.path.join(PROJECT_ROOT, "data", state_code.lower())
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, "state.json")
 
@@ -93,7 +93,7 @@ def scrape_local(state_code, state_config, jurisdiction_filter=None, dry_run=Fal
     """
     jurisdictions = state_config.get("jurisdictions", [])
 
-    output_dir = os.path.join(PROJECT_ROOT, "data", state_code, "local")
+    output_dir = os.path.join(PROJECT_ROOT, "data", state_code.lower(), "local")
     os.makedirs(output_dir, exist_ok=True)
 
     for entry in jurisdictions:
@@ -158,7 +158,7 @@ def scrape_boundaries(state_code, state_config, dry_run=False):
     """Build boundary GeoJSON files for a state."""
     from .boundaries import build_all_boundaries
 
-    output_dir = os.path.join(PROJECT_ROOT, "data", state_code, "boundaries")
+    output_dir = os.path.join(PROJECT_ROOT, "data", state_code.lower(), "boundaries")
 
     print(f"\n{'=' * 60}")
     print(f"Building boundaries for {state_code}")
