@@ -50,7 +50,23 @@ Scrapers never commit directly to main. The workflow:
 
 ## Adding a Local Adapter
 
-1. Create `scrapers/adapters/my_jurisdiction.py` extending `BaseAdapter`
-2. Register it in `scrapers/__main__.py` ADAPTERS dict
-3. Add jurisdiction entry to `registry.json` under the state's `jurisdictions` array
-4. Run `python -m scrapers --jurisdiction county:my-jurisdiction`
+Before writing a bespoke adapter, check these in order:
+
+1. **Check for JSON APIs first** — probe the site for structured data endpoints:
+   - CivicLive/ConnectSuite: `GET {origin}/sys/api/directory` (see `bamberg_city.py`)
+   - WordPress REST API: `GET {origin}/wp-json/wp/v2/` — look for custom post types like `people` or `team`
+   - CivicPlus headless CMS: check page source for `civicplus-headless` tokens (see `greenville_city.py`)
+   - Drupal JSON:API: `GET {origin}/jsonapi` (usually locked down, but worth checking)
+2. **Try shared adapters** — check if the site matches an existing pattern:
+   - `civicplus` — CivicPlus staff directory pages with `directoryDeptId` config
+   - `revize` / `generic_mailto` — Revize CMS freeform pages with mailto links
+   - `table` — any page with an HTML table containing name/email/phone columns
+   - `drupal_views` — Drupal sites with `views-row` or `person-item` patterns
+3. **Fall back to MASC/SCAC** if the primary site is WAF-blocked (403):
+   - Cities/towns: `masc` adapter pulls from `https://www.masc.sc/municipality/{slug}` (names + titles only)
+   - Counties: `scac` adapter pulls from `https://www.sccounties.org/county/{slug}/directory` (names + titles + phones)
+4. **Write a bespoke adapter** only if none of the above work:
+   - Create `scrapers/adapters/my_jurisdiction.py` extending `BaseAdapter`
+   - Register it in `scrapers/__main__.py` ADAPTERS dict
+   - Add jurisdiction entry to `registry.json` under the state's `jurisdictions` array
+   - Run `python -m scrapers --jurisdiction county:my-jurisdiction`
