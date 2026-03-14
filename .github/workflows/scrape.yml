@@ -85,6 +85,20 @@ jobs:
           echo "$STALE" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
+      - name: Run quality report
+        id: quality
+        run: |
+          QUALITY=$(python scripts/quality_report.py --summary-only)
+          echo "output=$QUALITY" >> $GITHUB_OUTPUT
+
+      - name: Upload quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-report
+          path: scripts/quality_report.py
+          retention-days: 30
+
       - name: Create PR if data changed
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -111,6 +125,15 @@ jobs:
           ### Stale Data Warnings
 
           $STALE"
+          fi
+
+          QUALITY="${{ steps.quality.outputs.output }}"
+          if [ -n "$QUALITY" ]; then
+            BODY="$BODY
+
+          ### Data Quality
+
+          $QUALITY"
           fi
 
           BODY="$BODY
