@@ -44,7 +44,7 @@ markers =
 **Step 3: Create `tests/conftest.py`**
 
 ```python
-"""Shared test fixtures for call-your-rep tests."""
+"""Shared test fixtures for open-civics tests."""
 
 import os
 import pytest
@@ -1727,7 +1727,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 SNAPSHOTS_DIR = os.path.join(PROJECT_ROOT, "tests", "fixtures", "snapshots")
 MANIFEST_PATH = os.path.join(SNAPSHOTS_DIR, "snapshots.json")
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 
 
 def main():

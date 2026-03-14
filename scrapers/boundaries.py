@@ -44,7 +44,7 @@ SIMPLIFY_TOLERANCE = 0.001
 # 5 decimal places ~ 1.1m precision, plenty for district matching.
 COORD_PRECISION = 5
 
-HEADERS = {"User-Agent": "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"}
+HEADERS = {"User-Agent": "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"}
 
 
 # ---------------------------------------------------------------------------

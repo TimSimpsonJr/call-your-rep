@@ -351,7 +351,7 @@ from bs4 import BeautifulSoup
 
 from .base import BaseAdapter, normalize_phone
 
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 LISTING_URL = "https://www.cityofrockhill.com/government/city-council"
 BASE_URL = "https://www.cityofrockhill.com"
 
@@ -524,7 +524,7 @@ from bs4 import BeautifulSoup
 
 from .base import BaseAdapter, normalize_phone
 
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 PAGE_URL = "https://www.cityofaikensc.gov/government/city-council/"
 
 
@@ -763,7 +763,7 @@ from bs4 import BeautifulSoup
 
 from .base import BaseAdapter, normalize_phone
 
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 PAGE_URL = "https://www.kershaw.sc.gov/our-county"
 
 

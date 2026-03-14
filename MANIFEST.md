@@ -1,18 +1,18 @@
-# MANIFEST — call-your-rep
+# MANIFEST — open-civics
 
 ## Stack
 
 - **Language:** Python 3.12+ (scrapers, validation), JSON (data, config)
 - **Dependencies:** requests, beautifulsoup4, geopandas, shapely
-- **Publish:** Two npm packages (`call-your-rep`, `call-your-rep-boundaries`) via GitHub Actions
+- **Publish:** Two npm packages (`open-civics`, `open-civics-boundaries`) via GitHub Actions
 
 ## Structure
 
 ```
-call-your-rep/
+open-civics/
 ├── registry.json                  # Master config: states, jurisdictions, boundary sources, adapter configs
-├── package.json                   # npm package def for call-your-rep (rep contact data)
-├── boundaries-package.json        # npm package def for call-your-rep-boundaries (district GeoJSON)
+├── package.json                   # npm package def for open-civics (rep contact data)
+├── boundaries-package.json        # npm package def for open-civics-boundaries (district GeoJSON)
 ├── requirements.txt               # Python dependencies (pinned versions)
 ├── validate.py                    # Data validation: schema checks, member count sanity, coordinate bounds
 │

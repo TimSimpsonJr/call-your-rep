@@ -22,7 +22,7 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 
 from .base import BaseAdapter, deobfuscate_cf_email
 
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 
 DEFAULT_EXCLUDE = ["clerk", "administrator", "manager", "secretary",
                    "treasurer", "attorney", "director", "assistant"]

@@ -22,7 +22,7 @@ from bs4 import BeautifulSoup
 
 from .base import BaseAdapter
 
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 
 # Detail page with individual member bios and contact info
 DETAIL_URL = "https://www.charlestoncounty.gov/departments/county-council/countycouncil.php"

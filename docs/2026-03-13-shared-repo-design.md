@@ -3,20 +3,20 @@
 ## Goal
 
 Extract scraper infrastructure and legislator data from deflocksc-website into a
-standalone repo (`call-your-rep`) that serves as the single source of truth for
+standalone repo (`open-civics`) that serves as the single source of truth for
 representative contact info. Start with SC, scaffold for all US states + federal.
 
 ## Approach
 
 Monorepo containing Python scrapers and JSON data output, published as two npm
-packages: `call-your-rep` (rep contact data) and `call-your-rep-boundaries`
+packages: `open-civics` (rep contact data) and `open-civics-boundaries`
 (district GeoJSON). Consumers install via npm. Scrapers run on GitHub Actions
 and auto-publish after validation.
 
 ## Repo Structure
 
 ```
-call-your-rep/
+open-civics/
 ├── scrapers/
 │   ├── __init__.py
 │   ├── __main__.py              # CLI: python -m scrapers [--state SC] [--local-only]
@@ -44,8 +44,8 @@ call-your-rep/
 ├── registry.json
 ├── validate.py
 ├── requirements.txt
-├── package.json                 # call-your-rep (publishes data/ minus boundaries)
-├── boundaries-package.json      # call-your-rep-boundaries (publishes boundaries)
+├── package.json                 # open-civics (publishes data/ minus boundaries)
+├── boundaries-package.json      # open-civics-boundaries (publishes boundaries)
 ├── .github/
 │   └── workflows/
 │       ├── scrape.yml           # Weekly state, monthly local+boundaries
@@ -166,11 +166,11 @@ python -m scrapers --dry-run
 
 ## npm Packages
 
-### `call-your-rep`
+### `open-civics`
 
 ```json
 {
-  "name": "call-your-rep",
+  "name": "open-civics",
   "version": "0.1.0",
   "files": ["data/"],
   "exports": {
@@ -179,12 +179,12 @@ python -m scrapers --dry-run
 }
 ```
 
-Consumer import: `import scState from 'call-your-rep/sc/state.json'`
+Consumer import: `import scState from 'open-civics/sc/state.json'`
 
-### `call-your-rep-boundaries`
+### `open-civics-boundaries`
 
 Separate package for district GeoJSON (large files). Same repo, separate
-package.json. Consumer import: `import sldu from 'call-your-rep-boundaries/sc/sldu.json'`
+package.json. Consumer import: `import sldu from 'open-civics-boundaries/sc/sldu.json'`
 
 ## GitHub Actions
 
@@ -212,7 +212,7 @@ package.json. Consumer import: `import sldu from 'call-your-rep-boundaries/sc/sl
 
 ## Migration from deflocksc-website
 
-### Moves to call-your-rep
+### Moves to open-civics
 
 - `scripts/scrape_reps/` -> `scrapers/`
 - `scripts/build-districts.py` -> `scrapers/boundaries.py`
@@ -232,7 +232,7 @@ package.json. Consumer import: `import sldu from 'call-your-rep-boundaries/sc/sl
 
 ### Changes in deflocksc-website
 
-- Add `call-your-rep` and `call-your-rep-boundaries` as npm dependencies
+- Add `open-civics` and `open-civics-boundaries` as npm dependencies
 - Replace JSON imports to point at package paths
 - Remove `scripts/scrape_reps/`, `scripts/build-districts.py`, `scripts/validate-data.py`
 - Remove `src/data/state-legislators.json`, `src/data/local-councils.json`, `src/data/registry.json`
@@ -253,7 +253,7 @@ package.json. Consumer import: `import sldu from 'call-your-rep-boundaries/sc/sl
 
 - Extract current SC scrapers + data
 - Scaffold multi-state structure (directories, CLI flags, email rules config)
-- Publish as `call-your-rep` + `call-your-rep-boundaries` on npm
+- Publish as `open-civics` + `open-civics-boundaries` on npm
 - Update deflocksc-website to consume packages
 - Safety gate: scraper -> PR -> validate -> auto-merge -> publish
 - SC only; no other states populated yet

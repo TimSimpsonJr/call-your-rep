@@ -21,7 +21,7 @@ from bs4 import BeautifulSoup
 
 from .base import BaseAdapter, deobfuscate_cf_email
 
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 PAGE_URL = "https://chestercountysc.gov/government/chester-county-council/county-council-members/"
 
 

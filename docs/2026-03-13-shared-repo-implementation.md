@@ -2,9 +2,9 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Extract scraper infrastructure and legislator data from deflocksc-website into a standalone `call-your-rep` repo, publish as two npm packages, and update deflocksc-website to consume them.
+**Goal:** Extract scraper infrastructure and legislator data from deflocksc-website into a standalone `open-civics` repo, publish as two npm packages, and update deflocksc-website to consume them.
 
-**Architecture:** Monorepo with Python scrapers producing JSON data, published as `call-your-rep` (rep contact data) and `call-your-rep-boundaries` (district GeoJSON) on npm. Scrapers commit to a `data-update` branch, validation auto-merges to `main`, weekly npm publish.
+**Architecture:** Monorepo with Python scrapers producing JSON data, published as `open-civics` (rep contact data) and `open-civics-boundaries` (district GeoJSON) on npm. Scrapers commit to a `data-update` branch, validation auto-merges to `main`, weekly npm publish.
 
 **Tech Stack:** Python 3.12 (scrapers), npm (publishing), GitHub Actions (CI/CD), Astro/Vite (consumer)
 
@@ -20,14 +20,14 @@
 
 Run:
 ```bash
-gh repo create TimSimpsonJr/call-your-rep --public --description "US legislator contact data — scraped, validated, and published as npm packages" --clone
+gh repo create TimSimpsonJr/open-civics --public --description "US legislator contact data — scraped, validated, and published as npm packages" --clone
 ```
 
 **Step 2: Navigate to the new repo**
 
 Run:
 ```bash
-cd call-your-rep
+cd open-civics
 ```
 
 **Step 3: Create directory structure**
@@ -41,14 +41,14 @@ mkdir -p scrapers/adapters data/sc/local data/sc/boundaries .github/workflows
 
 Create `README.md`:
 ```markdown
-# call-your-rep
+# open-civics
 
 US legislator contact data — scraped, validated, and published as npm packages.
 
 ## Packages
 
-- **`call-your-rep`** — Representative contact info (name, email, phone, party, district)
-- **`call-your-rep-boundaries`** — District boundary GeoJSON for client-side matching
+- **`open-civics`** — Representative contact info (name, email, phone, party, district)
+- **`open-civics-boundaries`** — District boundary GeoJSON for client-side matching
 
 ## Data structure
 
@@ -69,22 +69,22 @@ data/
 ## Usage
 
 ```bash
-npm install call-your-rep
+npm install open-civics
 ```
 
 ```js
-import scState from 'call-your-rep/sc/state.json';
-import greenvilleCounty from 'call-your-rep/sc/local/county-greenville.json';
+import scState from 'open-civics/sc/state.json';
+import greenvilleCounty from 'open-civics/sc/local/county-greenville.json';
 ```
 
 For boundary data:
 
 ```bash
-npm install call-your-rep-boundaries
+npm install open-civics-boundaries
 ```
 
 ```js
-import senateBoundaries from 'call-your-rep-boundaries/sc/sldu.json';
+import senateBoundaries from 'open-civics-boundaries/sc/sldu.json';
 ```
 
 ## Scraping
@@ -137,18 +137,18 @@ git add -A && git commit -m "chore: scaffold repo structure"
 
 ### Task 2: Create package.json files
 
-**Step 1: Create main package.json for `call-your-rep`**
+**Step 1: Create main package.json for `open-civics`**
 
 Create `package.json`:
 ```json
 {
-  "name": "call-your-rep",
+  "name": "open-civics",
   "version": "0.1.0",
   "description": "US legislator contact data — names, emails, phones, districts",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TimSimpsonJr/call-your-rep"
+    "url": "https://github.com/TimSimpsonJr/open-civics"
   },
   "files": [
     "data/**/state.json",
@@ -173,13 +173,13 @@ Create `package.json`:
 Create `boundaries-package.json`:
 ```json
 {
-  "name": "call-your-rep-boundaries",
+  "name": "open-civics-boundaries",
   "version": "0.1.0",
   "description": "US legislative district boundary GeoJSON for client-side matching",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TimSimpsonJr/call-your-rep"
+    "url": "https://github.com/TimSimpsonJr/open-civics"
   },
   "files": [
     "data/**/boundaries/"
@@ -227,7 +227,7 @@ Copy `scrapers/adapters/__init__.py` (empty file).
 Copy `deflocksc-website/scripts/scrape_reps/state.py` to `scrapers/state.py`.
 
 Changes needed:
-- Update User-Agent string from `DeflockSC-RepScraper` to `CallYourRep-Scraper/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)`
+- Update User-Agent string from `DeflockSC-RepScraper` to `OpenCivics-Scraper/1.0 (+https://github.com/TimSimpsonJr/open-civics)`
 - The `update_state_legislators` function writes directly to a path — this is fine, the CLI will pass the new path
 
 **Step 3: Create state_email_rules.py**
@@ -803,7 +803,7 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Bump version and publish call-your-rep
+      - name: Bump version and publish open-civics
         if: steps.check.outputs.changed == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -811,7 +811,7 @@ jobs:
           npm version patch --no-git-tag-version
           npm publish --access public
 
-      - name: Publish call-your-rep-boundaries
+      - name: Publish open-civics-boundaries
         if: steps.check.outputs.changed == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -892,7 +892,7 @@ git push -u origin main
 
 Run:
 ```bash
-gh repo view TimSimpsonJr/call-your-rep --web
+gh repo view TimSimpsonJr/open-civics --web
 ```
 
 **Step 3: Test scraper locally**
@@ -919,11 +919,11 @@ Expected: all checks pass.
 
 ### Task 11: Install packages in deflocksc-website
 
-**Step 1: Install call-your-rep**
+**Step 1: Install open-civics**
 
 Run (from deflocksc-website):
 ```bash
-npm install call-your-rep call-your-rep-boundaries
+npm install open-civics open-civics-boundaries
 ```
 
 **Step 2: Update imports in ActionModal.astro**
@@ -937,7 +937,7 @@ import registryFull from '../data/registry.json';
 
 To:
 ```typescript
-import stateLegislators from 'call-your-rep/sc/state.json';
+import stateLegislators from 'open-civics/sc/state.json';
 // Local councils need to be loaded differently since they're now split files
 // Import them individually or use a glob import
 ```
@@ -947,14 +947,14 @@ This will require some refactoring of how local council data is loaded in Action
 **Step 3: Update district-matcher.ts boundary paths**
 
 The boundary files will still be served from `/districts/` at runtime. Options:
-- Copy boundary files from `node_modules/call-your-rep-boundaries/data/sc/boundaries/` to `public/districts/` at build time
+- Copy boundary files from `node_modules/open-civics-boundaries/data/sc/boundaries/` to `public/districts/` at build time
 - Or update the fetch paths in district-matcher.ts
 
 A build-time copy script in `package.json` is cleanest:
 ```json
 {
   "scripts": {
-    "prebuild": "cp -r node_modules/call-your-rep-boundaries/data/sc/boundaries/* public/districts/"
+    "prebuild": "cp -r node_modules/open-civics-boundaries/data/sc/boundaries/* public/districts/"
   }
 }
 ```
@@ -991,5 +991,5 @@ Verify: site builds without errors, action modal loads rep data correctly.
 
 Run:
 ```bash
-git add -A && git commit -m "refactor: consume rep data from call-your-rep npm packages"
+git add -A && git commit -m "refactor: consume rep data from open-civics npm packages"
 ```

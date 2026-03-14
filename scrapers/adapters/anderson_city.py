@@ -23,7 +23,7 @@ from bs4 import BeautifulSoup
 from .base import BaseAdapter, normalize_phone
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 
 
 class AndersonCityAdapter(BaseAdapter):

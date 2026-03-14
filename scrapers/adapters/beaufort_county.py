@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup
 
 from .base import BaseAdapter, normalize_phone
 
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 INDEX_URL = "https://www.beaufortcountysc.gov/council/council-members/howard-alice.html"
 
 

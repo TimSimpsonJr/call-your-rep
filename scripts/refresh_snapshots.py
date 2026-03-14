@@ -16,7 +16,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 SNAPSHOTS_DIR = os.path.join(PROJECT_ROOT, "tests", "fixtures", "snapshots")
 MANIFEST_PATH = os.path.join(SNAPSHOTS_DIR, "snapshots.json")
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 
 
 def main():

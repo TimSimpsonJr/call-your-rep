@@ -51,10 +51,10 @@ jobs:
       - name: Validate package contents (dry run)
         if: steps.check.outputs.changed == 'true'
         run: |
-          echo "=== call-your-rep package contents ==="
+          echo "=== open-civics package contents ==="
           npm publish --dry-run --access public 2>&1
           echo ""
-          echo "=== call-your-rep-boundaries package contents ==="
+          echo "=== open-civics-boundaries package contents ==="
           TMPDIR=$(mktemp -d)
           cp boundaries-package.json "$TMPDIR/package.json"
           cp -r data "$TMPDIR/data"
@@ -63,13 +63,13 @@ jobs:
           cd -
           rm -rf "$TMPDIR"
 
-      - name: Publish call-your-rep
+      - name: Publish open-civics
         if: steps.check.outputs.changed == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public
 
-      - name: Publish call-your-rep-boundaries
+      - name: Publish open-civics-boundaries
         if: steps.check.outputs.changed == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

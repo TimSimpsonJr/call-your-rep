@@ -17,7 +17,7 @@ from bs4 import BeautifulSoup
 
 from .base import BaseAdapter
 
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 FAQ_URL = "https://www.sumtercountysc.gov/our_council/council_information/council_frequently_asked_questions.php"
 BASE_URL = "https://www.sumtercountysc.gov/"
 

@@ -1,8 +1,8 @@
-# call-your-rep
+# open-civics
 
 ## Overview
 
-Shared repo for US legislator contact data. Python scrapers produce JSON data published as two npm packages: `call-your-rep` (rep contact info) and `call-your-rep-boundaries` (district GeoJSON).
+Shared repo for US legislator contact data. Python scrapers produce JSON data published as two npm packages: `open-civics` (rep contact info) and `open-civics-boundaries` (district GeoJSON).
 
 ## Commands
 
@@ -33,7 +33,7 @@ Shared repo for US legislator contact data. Python scrapers produce JSON data pu
 
 - Data files include a `meta` block with `state`, `level`, `lastUpdated`, `source`
 - Local council files are per-jurisdiction (one file per council, not one big monolith)
-- User-Agent: `CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)`
+- User-Agent: `OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)`
 - Python 3.12+
 - Adapters extend `BaseAdapter` and implement `fetch()` and `parse()`
 

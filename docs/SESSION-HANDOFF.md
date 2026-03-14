@@ -1,8 +1,8 @@
-# Session Handoff — call-your-rep
+# Session Handoff — open-civics
 
 ## What Was Done
 
-Extracted scraper infrastructure and SC legislator data from `deflocksc-website` into this standalone repo. Everything is committed and pushed to GitHub (https://github.com/TimSimpsonJr/call-your-rep).
+Extracted scraper infrastructure and SC legislator data from `deflocksc-website` into this standalone repo. Everything is committed and pushed to GitHub (https://github.com/TimSimpsonJr/open-civics).
 
 ### Repo Contents
 - Python scrapers with adapter pattern (CivicPlus, Greenville County, Greenville City)
@@ -10,7 +10,7 @@ Extracted scraper infrastructure and SC legislator data from `deflocksc-website`
 - 96 per-jurisdiction local council files
 - 50 boundary GeoJSON files
 - GitHub Actions: weekly/monthly scraping, PR validation with auto-merge, weekly npm publish
-- Two npm packages: `call-your-rep` (rep data) and `call-your-rep-boundaries` (district GeoJSON)
+- Two npm packages: `open-civics` (rep data) and `open-civics-boundaries` (district GeoJSON)
 
 ### Key Fixes Applied (from code review)
 - Charleston bad data cleared (admin staff, not council members) — adapter set to `manual`
@@ -29,7 +29,7 @@ Extracted scraper infrastructure and SC legislator data from `deflocksc-website`
    - Add title-based data quality validation (detect admin staff vs elected officials)
 
 ### Separate Session (deflocksc-website)
-3. **Phase 4: Consume npm packages** — Update deflocksc-website to install `call-your-rep` and `call-your-rep-boundaries`, update imports in `ActionModal.astro` and `district-matcher.ts`, remove extracted files, add build-time boundary copy script.
+3. **Phase 4: Consume npm packages** — Update deflocksc-website to install `open-civics` and `open-civics-boundaries`, update imports in `ActionModal.astro` and `district-matcher.ts`, remove extracted files, add build-time boundary copy script.
 
 ### Manual Steps (user)
 4. **NPM account** — Create npmjs.org account, add `NPM_TOKEN` secret to this repo's GitHub settings for the publish workflow.

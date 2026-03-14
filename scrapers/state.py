@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 from .adapters.base import normalize_phone
 from .state_email_rules import generate_email
 
-HEADERS = {"User-Agent": "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"}
+HEADERS = {"User-Agent": "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"}
 
 
 REQUIRED_CSV_COLUMNS = {"name", "current_district", "current_chamber", "current_party"}

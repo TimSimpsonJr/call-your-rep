@@ -15,7 +15,7 @@ import requests
 
 from .base import BaseAdapter
 
-USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
+USER_AGENT = "OpenCivics/1.0 (+https://github.com/TimSimpsonJr/open-civics)"
 API_URL = (
     "https://app.membershipware.com/api/public/mwjsPeople"
     "?et=wYHxoV0HZTY%2fzJguM9IJ6A%3d%3d"

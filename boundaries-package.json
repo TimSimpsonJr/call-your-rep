@@ -1,11 +1,11 @@
 {
-  "name": "call-your-rep-boundaries",
+  "name": "open-civics-boundaries",
   "version": "0.1.0",
   "description": "US legislative district boundary GeoJSON for client-side matching",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TimSimpsonJr/call-your-rep"
+    "url": "https://github.com/TimSimpsonJr/open-civics"
   },
   "files": [
     "data/**/boundaries/"
