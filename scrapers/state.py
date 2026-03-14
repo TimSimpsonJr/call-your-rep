@@ -10,6 +10,8 @@ from datetime import date
 import requests
 from bs4 import BeautifulSoup
 
+from .state_email_rules import generate_email
+
 HEADERS = {"User-Agent": "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"}
 
 
@@ -190,8 +192,22 @@ def update_state_legislators(
         "house": house,
     }
 
+    # Backfill missing emails from state-specific rules
+    for chamber_key in ("senate", "house"):
+        for district, record in data.get(chamber_key, {}).items():
+            if not record.get("email"):
+                name = record.get("name", "")
+                parts = name.split(" ", 1)
+                if len(parts) == 2:
+                    first, last = parts
+                    email = generate_email(state_code, chamber_key, first, last)
+                    if email:
+                        record["email"] = email
+                        record["emailVerified"] = False
+
     # Backfill phone numbers from scstatehouse.gov member pages
-    _backfill_phones(data)
+    if state_code == "SC":
+        _backfill_phones(data)
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)

@@ -14,14 +14,16 @@ US legislator contact data — scraped, validated, and published as npm packages
 ```
 data/
   sc/
-    state.json          # State-level reps (governor, senators, etc.)
+    state.json                # State legislators (senate + house) by district
     local/
-      greenville.json   # City/county reps by jurisdiction
-      charleston.json
+      county-greenville.json  # County council reps by jurisdiction
+      place-greenville.json   # City council reps by jurisdiction
       ...
     boundaries/
-      senate.geojson    # State senate district boundaries
-      house.geojson     # State house district boundaries
+      sldu.json               # State senate district boundaries
+      sldl.json               # State house district boundaries
+      county-greenville.json  # County council district boundaries
+      place-greenville.json   # City council district boundaries
       ...
 ```
 
@@ -30,10 +32,12 @@ data/
 ```js
 // Rep contact data
 import scState from 'call-your-rep/sc/state.json';
-import greenville from 'call-your-rep/sc/local/greenville.json';
+import greenvilleCounty from 'call-your-rep/sc/local/county-greenville.json';
+import greenvilleCity from 'call-your-rep/sc/local/place-greenville.json';
 
 // District boundaries
-import senateBoundaries from 'call-your-rep-boundaries/sc/boundaries/senate.geojson';
+import senateBoundaries from 'call-your-rep-boundaries/sc/boundaries/sldu.json';
+import houseBoundaries from 'call-your-rep-boundaries/sc/boundaries/sldl.json';
 ```
 
 ## Scraping

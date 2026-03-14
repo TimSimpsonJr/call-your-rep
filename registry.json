@@ -190,7 +190,7 @@
           "name": "Charleston City Council",
           "type": "place",
           "county": "Charleston",
-          "adapter": "civicplus",
+          "adapter": "manual",
           "url": "https://www.charleston-sc.gov/180/Members-Districts",
           "districts": 12,
           "atLarge": false,

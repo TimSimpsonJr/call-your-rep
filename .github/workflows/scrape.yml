@@ -33,21 +33,34 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements.txt
 
-      - name: Run scrapers
+      - name: Determine scope
+        id: scope
         run: |
-          ARGS=""
-          if [ -n "${{ github.event.inputs.state }}" ]; then
-            ARGS="$ARGS --state ${{ github.event.inputs.state }}"
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ "${{ github.event.schedule }}" = "0 15 * * 1" ]; then
+              echo "args=--state-only" >> $GITHUB_OUTPUT
+            elif [ "${{ github.event.schedule }}" = "0 15 1 * *" ]; then
+              echo "args=" >> $GITHUB_OUTPUT
+            fi
+          else
+            # Manual dispatch
+            ARGS=""
+            if [ -n "${{ github.event.inputs.state }}" ]; then
+              ARGS="$ARGS --state ${{ github.event.inputs.state }}"
+            fi
+            SCOPE="${{ github.event.inputs.scope || 'all' }}"
+            if [ "$SCOPE" = "state-only" ]; then
+              ARGS="$ARGS --state-only"
+            elif [ "$SCOPE" = "local-only" ]; then
+              ARGS="$ARGS --local-only"
+            elif [ "$SCOPE" = "boundaries-only" ]; then
+              ARGS="$ARGS --boundaries-only"
+            fi
+            echo "args=$ARGS" >> $GITHUB_OUTPUT
           fi
-          SCOPE="${{ github.event.inputs.scope || 'all' }}"
-          if [ "$SCOPE" = "state-only" ]; then
-            ARGS="$ARGS --state-only"
-          elif [ "$SCOPE" = "local-only" ]; then
-            ARGS="$ARGS --local-only"
-          elif [ "$SCOPE" = "boundaries-only" ]; then
-            ARGS="$ARGS --boundaries-only"
-          fi
-          python -m scrapers $ARGS
+
+      - name: Run scrapers
+        run: python -m scrapers ${{ steps.scope.outputs.args }}
 
       - name: Validate data
         run: python validate.py

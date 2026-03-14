@@ -31,28 +31,39 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Bump version and publish call-your-rep
+      - name: Bump version
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          npm version patch --no-git-tag-version
+          VERSION=$(node -p "require('./package.json').version")
+          # Sync boundaries version
+          node -e "const p=require('./boundaries-package.json'); p.version='$VERSION'; require('fs').writeFileSync('boundaries-package.json', JSON.stringify(p, null, 2)+'\n')"
+
+      - name: Publish call-your-rep
         if: steps.check.outputs.changed == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm version patch --no-git-tag-version
-          npm publish --access public
+        run: npm publish --access public
 
       - name: Publish call-your-rep-boundaries
         if: steps.check.outputs.changed == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
+          # Temporarily swap package.json for boundaries publish
+          cp package.json package.json.bak
           cp boundaries-package.json package.json
-          npm version patch --no-git-tag-version
           npm publish --access public
+          # Restore
+          mv package.json.bak package.json
 
-      - name: Tag release
+      - name: Commit version bump and tag
         if: steps.check.outputs.changed == 'true'
         run: |
           VERSION=$(node -p "require('./package.json').version")
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json boundaries-package.json
+          git commit -m "chore: bump version to v$VERSION"
           git tag "v$VERSION"
-          git push --tags
+          git push && git push --tags

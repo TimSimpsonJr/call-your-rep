@@ -98,7 +98,7 @@ def scrape_local(state_code, state_config, jurisdiction_filter=None, dry_run=Fal
 
     for entry in jurisdictions:
         jid = entry.get("id", "")
-        label = entry.get("label", jid)
+        label = entry.get("name", jid)
 
         # Filter if a specific jurisdiction was requested
         if jurisdiction_filter and jid != jurisdiction_filter:
