@@ -5,7 +5,12 @@
     "jurisdiction": "place:mccormick",
     "label": "McCormick Town Council",
     "lastUpdated": "2026-03-14",
-    "adapter": "mccormick_town"
+    "adapter": "mccormick_town",
+    "contact": {
+      "phone": "(864) 852-2225",
+      "email": "",
+      "note": "Town Hall - no individual council member contact info published"
+    }
   },
   "members": [
     {

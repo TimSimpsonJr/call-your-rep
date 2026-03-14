@@ -99,9 +99,18 @@ class BaseAdapter(abc.ABC):
     def scrape(self) -> list[dict]:
         """Full pipeline: fetch -> parse -> normalize -> validate."""
         html = self.fetch()
+        self._html = html  # Cache for get_contact()
         raw = self.parse(html)
         normalized = self.normalize(raw)
         return self.validate(normalized)
+
+    def get_contact(self) -> dict | None:
+        """Return general contact info for the jurisdiction, if available.
+        Override in subclasses for jurisdictions where individual member
+        contact info is not published.
+        Returns None if not applicable.
+        """
+        return None
 
     def adapter_name(self) -> str:
         """Return the adapter name for the source field."""

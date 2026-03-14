@@ -5,7 +5,12 @@
     "jurisdiction": "place:marion",
     "label": "Marion City Council",
     "lastUpdated": "2026-03-14",
-    "adapter": "marion_city"
+    "adapter": "marion_city",
+    "contact": {
+      "phone": "(843) 423-5961",
+      "email": "",
+      "note": "City Hall - no individual council member contact info published"
+    }
   },
   "members": [
     {

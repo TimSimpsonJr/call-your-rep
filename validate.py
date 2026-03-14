@@ -140,6 +140,18 @@ def validate_local_file(data, filepath):
         if jurisdiction and not re.match(r"^(county|place):.+$", jurisdiction):
             warn(label, f"Unexpected jurisdiction format: '{jurisdiction}'")
 
+        contact = meta.get("contact")
+        if contact is not None:
+            if not isinstance(contact, dict):
+                error(label, "meta.contact must be an object")
+            else:
+                phone = contact.get("phone", "")
+                if phone and not PHONE_RE.match(phone):
+                    warn(label, f"meta.contact.phone: unexpected format '{phone}'")
+                email = contact.get("email", "")
+                if email and not EMAIL_RE.match(email):
+                    warn(label, f"meta.contact.email: invalid format '{email}'")
+
     # Validate members
     members = data.get("members")
     if not isinstance(members, list):

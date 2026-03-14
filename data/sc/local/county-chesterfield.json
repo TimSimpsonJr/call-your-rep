@@ -5,7 +5,12 @@
     "jurisdiction": "county:chesterfield",
     "label": "Chesterfield County Council",
     "lastUpdated": "2026-03-14",
-    "adapter": "chesterfield_county"
+    "adapter": "chesterfield_county",
+    "contact": {
+      "phone": "(843) 623-3945",
+      "email": "",
+      "note": "County offices - no individual council member contact info published"
+    }
   },
   "members": [
     {

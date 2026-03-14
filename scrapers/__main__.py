@@ -296,6 +296,11 @@ def scrape_local(state_code, state_config, jurisdiction_filter=None, dry_run=Fal
             data["meta"]["dataHash"] = data_hash
             data["meta"]["dataLastChanged"] = data_last_changed
 
+            # Add general contact info if adapter provides it
+            contact = adapter.get_contact()
+            if contact:
+                data["meta"]["contact"] = contact
+
             with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
                 f.write("\n")

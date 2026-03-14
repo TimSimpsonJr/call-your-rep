@@ -5,7 +5,12 @@
     "jurisdiction": "place:bishopville",
     "label": "Bishopville City Council",
     "lastUpdated": "2026-03-14",
-    "adapter": "bishopville_city"
+    "adapter": "bishopville_city",
+    "contact": {
+      "phone": "(803) 484-5948",
+      "email": "",
+      "note": "City Hall - no individual council member contact info published"
+    }
   },
   "members": [
     {
