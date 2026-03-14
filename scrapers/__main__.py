@@ -22,15 +22,23 @@ PROJECT_ROOT = os.path.join(SCRIPT_DIR, "..")
 REGISTRY_PATH = os.path.join(PROJECT_ROOT, "registry.json")
 
 from .adapters.civicplus import CivicPlusAdapter
+from .adapters.dorchester_county import DorchesterCountyAdapter
 from .adapters.greenville_city import GreenvilleCityAdapter
 from .adapters.greenville_county import GreenvilleCountyAdapter
+from .adapters.horry_county import HorryCountyAdapter
+from .adapters.kershaw_county import KershawCountyAdapter
 from .adapters.revize import RevizeAdapter
+from .adapters.richland_county import RichlandCountyAdapter
 
 ADAPTERS = {
     "civicplus": CivicPlusAdapter,
+    "dorchester_county": DorchesterCountyAdapter,
     "greenville_city": GreenvilleCityAdapter,
     "greenville_county": GreenvilleCountyAdapter,
+    "horry_county": HorryCountyAdapter,
+    "kershaw_county": KershawCountyAdapter,
     "revize": RevizeAdapter,
+    "richland_county": RichlandCountyAdapter,
 }
 
 
