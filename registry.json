@@ -216,6 +216,9 @@
           "url": "https://www.northcharleston.org/government/city_council/city_council_members_and_districts.php",
           "districts": 10,
           "atLarge": false,
+          "adapterConfig": {
+            "mayorUrl": "https://www.northcharleston.org/government/office_of_the_mayor/index.php"
+          },
           "notes": "10 single-member districts + mayor elected at-large"
         },
         {
@@ -1129,6 +1132,9 @@
           "url": "https://www.ridgelandsc.gov/town-council",
           "districts": 4,
           "atLarge": true,
+          "adapterConfig": {
+            "mayorUrl": "https://www.ridgelandsc.gov/mayor"
+          },
           "notes": "District count unverified."
         },
         {
@@ -1571,7 +1577,8 @@
           "adapterConfig": {
             "baseUrl": "https://www.tompsc.com",
             "councilPageId": "91",
-            "directoryDeptId": "23"
+            "directoryDeptId": "23",
+            "mayorUrl": "https://www.tompsc.com/89/Mayor-Will-Haynie"
           },
           "notes": "8 council members + mayor, all elected at-large. CivicPlus website. Pop. ~91k."
         }

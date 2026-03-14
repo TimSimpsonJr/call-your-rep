@@ -9,6 +9,14 @@
   },
   "members": [
     {
+      "name": "Vincent Sheheen",
+      "title": "Mayor",
+      "email": "vincentformayor@gmail.com",
+      "phone": "",
+      "source": "genericmailto",
+      "lastUpdated": "2026-03-14"
+    },
+    {
       "name": "Delia Davis",
       "title": "Council Member",
       "email": "ddavis@camdensc.org",
@@ -28,14 +36,6 @@
       "name": "Phil Elliott",
       "title": "Council Member",
       "email": "pelliott@camdensc.org",
-      "phone": "",
-      "source": "genericmailto",
-      "lastUpdated": "2026-03-14"
-    },
-    {
-      "name": "Vincent Sheheen",
-      "title": "Council Member",
-      "email": "vincentformayor@gmail.com",
       "phone": "",
       "source": "genericmailto",
       "lastUpdated": "2026-03-14"
