@@ -26,6 +26,22 @@
       "adapter_class": "GenericMailtoAdapter",
       "entry": {"id": "place:camden", "url": "https://www.experiencecamdensc.com/government/mayor-and-city-council/"},
       "min_members": 3
+    },
+    {
+      "file": "civicplus_spartanburg.html",
+      "url": "https://www.spartanburgcounty.gov/Directory.aspx?did=42",
+      "adapter": "civicplus",
+      "adapter_module": "scrapers.adapters.civicplus",
+      "adapter_class": "CivicPlusAdapter",
+      "entry": {
+        "id": "county:spartanburg",
+        "url": "https://spartanburgcounty.org",
+        "adapterConfig": {
+          "baseUrl": "https://spartanburgcounty.org",
+          "councilPageId": "189"
+        }
+      },
+      "min_members": 3
     }
   ]
 }
