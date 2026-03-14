@@ -1,0 +1,31 @@
+{
+  "snapshots": [
+    {
+      "file": "revize_walterboro.html",
+      "url": "https://www.walterborosc.org/city-council",
+      "adapter": "revize",
+      "adapter_module": "scrapers.adapters.revize",
+      "adapter_class": "RevizeAdapter",
+      "entry": {"id": "place:walterboro", "url": "https://www.walterborosc.org/city-council"},
+      "min_members": 3
+    },
+    {
+      "file": "table_calhoun.html",
+      "url": "https://calhouncounty.sc.gov/officials",
+      "adapter": "table",
+      "adapter_module": "scrapers.adapters.table_adapter",
+      "adapter_class": "TableAdapter",
+      "entry": {"id": "county:calhoun", "url": "https://calhouncounty.sc.gov/officials"},
+      "min_members": 3
+    },
+    {
+      "file": "generic_mailto_camden.html",
+      "url": "https://www.experiencecamdensc.com/government/mayor-and-city-council/",
+      "adapter": "generic_mailto",
+      "adapter_module": "scrapers.adapters.generic_mailto",
+      "adapter_class": "GenericMailtoAdapter",
+      "entry": {"id": "place:camden", "url": "https://www.experiencecamdensc.com/government/mayor-and-city-council/"},
+      "min_members": 3
+    }
+  ]
+}
