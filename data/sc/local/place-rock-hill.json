@@ -4,65 +4,65 @@
     "level": "local",
     "jurisdiction": "place:rock-hill",
     "label": "Rock Hill City Council",
-    "lastUpdated": "2026-03-13",
-    "adapter": "manual"
+    "lastUpdated": "2026-03-14",
+    "adapter": "masc"
   },
   "members": [
     {
-      "name": "John Gettys",
+      "name": "John P. Gettys Jr.",
       "title": "Mayor",
       "email": "",
       "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
-    },
-    {
-      "name": "Derrick Lindsay",
-      "title": "Council Member, Ward 1",
-      "email": "",
-      "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
     },
     {
       "name": "Brent Faulkenberry",
-      "title": "Council Member, Ward 2",
+      "title": "Council Member",
       "email": "",
       "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    },
+    {
+      "name": "Derrick Lindsay",
+      "title": "Council Member",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    },
+    {
+      "name": "John Black",
+      "title": "Council Member",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
     },
     {
       "name": "Kevin Sutton",
-      "title": "Council Member, Ward 3",
+      "title": "Council Member",
       "email": "",
       "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
-    },
-    {
-      "name": "John A. Black III",
-      "title": "Council Member, Ward 4",
-      "email": "",
-      "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
     },
     {
       "name": "Nikita L. Jackson",
-      "title": "Council Member, Ward 5",
+      "title": "Council Member",
       "email": "",
       "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
     },
     {
-      "name": "Sarah Emerson Vining",
-      "title": "Council Member, Ward 6",
+      "name": "Sarah Vining",
+      "title": "Council Member",
       "email": "",
       "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
     }
   ]
 }
