@@ -4,65 +4,65 @@
     "level": "local",
     "jurisdiction": "place:aiken",
     "label": "Aiken City Council",
-    "lastUpdated": "2026-03-13",
-    "adapter": "manual"
+    "lastUpdated": "2026-03-14",
+    "adapter": "masc"
   },
   "members": [
     {
-      "name": "Teddy Milner",
+      "name": "Teddy W. Milner",
       "title": "Mayor",
       "email": "",
       "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
     },
     {
-      "name": "Gail Diggs",
-      "title": "Council Member, District 1",
+      "name": "Barbara Ruth Morgan",
+      "title": "Council Member",
       "email": "",
       "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
-    },
-    {
-      "name": "Lessie Price",
-      "title": "Council Member, District 2",
-      "email": "",
-      "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
-    },
-    {
-      "name": "Kay Brohl",
-      "title": "Council Member, District 3",
-      "email": "",
-      "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
-    },
-    {
-      "name": "Pete Messina",
-      "title": "Council Member, District 4",
-      "email": "",
-      "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
     },
     {
       "name": "Braylen Waldo",
-      "title": "Council Member, District 5",
+      "title": "Council Member",
       "email": "",
       "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
     },
     {
-      "name": "Barbara Morgan",
-      "title": "Council Member, District 6",
+      "name": "Gail Bush Diggs",
+      "title": "Council Member",
       "email": "",
       "phone": "",
-      "source": "manual",
-      "lastUpdated": "2026-03-04"
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    },
+    {
+      "name": "Kay Biermann Brohl",
+      "title": "Council Member",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    },
+    {
+      "name": "Lessie B. Price",
+      "title": "Council Member",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    },
+    {
+      "name": "Peter Messina",
+      "title": "Council Member",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
     }
   ]
 }

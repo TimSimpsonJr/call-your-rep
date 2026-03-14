@@ -67,6 +67,7 @@ from .adapters.laurens_county import LaurensCountyAdapter
 from .adapters.lee_county import LeeCountyAdapter
 from .adapters.lexington_county import LexingtonCountyAdapter
 from .adapters.marion_city import MarionCityAdapter
+from .adapters.masc import MascAdapter
 from .adapters.marlboro_county import MarlboroCountyAdapter
 from .adapters.mccormick_county import McCormickCountyAdapter
 from .adapters.mccormick_town import McCormickTownAdapter
@@ -77,6 +78,7 @@ from .adapters.orangeburg_city import OrangeburgCityAdapter
 from .adapters.revize import RevizeAdapter
 from .adapters.richland_county import RichlandCountyAdapter
 from .adapters.saluda_county import SaludaCountyAdapter
+from .adapters.scac import ScacAdapter
 from .adapters.st_george import StGeorgeAdapter
 from .adapters.st_matthews import StMatthewsAdapter
 from .adapters.sumter_city import SumterCityAdapter
@@ -135,6 +137,7 @@ ADAPTERS = {
     "lexington_county": LexingtonCountyAdapter,
     "marion_city": MarionCityAdapter,
     "marlboro_county": MarlboroCountyAdapter,
+    "masc": MascAdapter,
     "mccormick_county": McCormickCountyAdapter,
     "mccormick_town": McCormickTownAdapter,
     "moncks_corner": MoncksCornerAdapter,
@@ -144,6 +147,7 @@ ADAPTERS = {
     "revize": RevizeAdapter,
     "richland_county": RichlandCountyAdapter,
     "saluda_county": SaludaCountyAdapter,
+    "scac": ScacAdapter,
     "st_george": StGeorgeAdapter,
     "st_matthews": StMatthewsAdapter,
     "sumter_city": SumterCityAdapter,

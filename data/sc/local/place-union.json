@@ -4,8 +4,65 @@
     "level": "local",
     "jurisdiction": "place:union",
     "label": "Union City Council",
-    "lastUpdated": "2026-03-13",
-    "adapter": "manual"
+    "lastUpdated": "2026-03-14",
+    "adapter": "masc"
   },
-  "members": []
+  "members": [
+    {
+      "name": "Harold E. Thompson",
+      "title": "Mayor",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    },
+    {
+      "name": "Gloria Rogers",
+      "title": "Council Member",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    },
+    {
+      "name": "Jackie W. Earls Jr.",
+      "title": "Council Member",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    },
+    {
+      "name": "Monty Lee Cooke",
+      "title": "Council Member",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    },
+    {
+      "name": "Pamela G. Sloss",
+      "title": "Council Member",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    },
+    {
+      "name": "Ricky Todd Harris",
+      "title": "Council Member",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    },
+    {
+      "name": "Robert Garner",
+      "title": "Council Member",
+      "email": "",
+      "phone": "",
+      "source": "masc",
+      "lastUpdated": "2026-03-14"
+    }
+  ]
 }
