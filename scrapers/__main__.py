@@ -64,6 +64,7 @@ from .adapters.greenwood_county import GreenwoodCountyAdapter
 from .adapters.hampton_town import HamptonTownAdapter
 from .adapters.hilton_head import HiltonHeadAdapter
 from .adapters.horry_county import HorryCountyAdapter
+from .adapters.kershaw_county import KershawCountyAdapter
 from .adapters.kingstree import KingstreeAdapter
 from .adapters.laurens_county import LaurensCountyAdapter
 from .adapters.lee_county import LeeCountyAdapter
@@ -135,6 +136,7 @@ ADAPTERS = {
     "hampton_town": HamptonTownAdapter,
     "hilton_head": HiltonHeadAdapter,
     "horry_county": HorryCountyAdapter,
+    "kershaw_county": KershawCountyAdapter,
     "kingstree": KingstreeAdapter,
     "laurens_county": LaurensCountyAdapter,
     "lee_county": LeeCountyAdapter,

@@ -1136,7 +1136,7 @@
           "name": "Kershaw County Council",
           "type": "county",
           "county": "Kershaw",
-          "adapter": "scac",
+          "adapter": "kershaw_county",
           "url": "https://www.kershaw.sc.gov/county-council/council-members",
           "districts": 6,
           "atLarge": false,

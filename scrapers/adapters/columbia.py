@@ -17,7 +17,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-from .base import BaseAdapter
+from .base import BaseAdapter, normalize_phone
 
 USER_AGENT = "CallYourRep/1.0 (+https://github.com/TimSimpsonJr/call-your-rep)"
 PAGE_URL = "https://citycouncil.columbiasc.gov/"
@@ -63,8 +63,8 @@ class ColumbiaAdapter(BaseAdapter):
                     name = name[len(prefix):]
                     break
 
-            # Fetch profile page for district and email
-            district, email = self._fetch_profile(href)
+            # Fetch profile page for district, email, and phone
+            district, email, phone = self._fetch_profile(href)
 
             title = "Council Member"
             if district:
@@ -74,21 +74,21 @@ class ColumbiaAdapter(BaseAdapter):
                 "name": name.strip(),
                 "title": title,
                 "email": email,
-                "phone": "",
+                "phone": normalize_phone(phone) if phone else "",
             })
 
         members.sort(key=self._sort_key)
         return members
 
-    def _fetch_profile(self, url: str) -> tuple[str, str]:
-        """Fetch a profile page and extract district and email."""
+    def _fetch_profile(self, url: str) -> tuple[str, str, str]:
+        """Fetch a profile page and extract district, email, and phone."""
         try:
             resp = requests.get(
                 url, headers={"User-Agent": USER_AGENT}, timeout=30
             )
             resp.raise_for_status()
         except requests.RequestException:
-            return ("", "")
+            return ("", "", "")
 
         soup = BeautifulSoup(resp.text, "html.parser")
 
@@ -97,6 +97,17 @@ class ColumbiaAdapter(BaseAdapter):
         mailto = soup.find("a", href=lambda h: h and h.startswith("mailto:"))
         if mailto:
             email = mailto["href"].replace("mailto:", "").strip()
+
+        # Find phone from tel: link or text
+        phone = ""
+        tel = soup.find("a", href=lambda h: h and h.startswith("tel:"))
+        if tel:
+            phone = tel.get_text(strip=True)
+        else:
+            text = soup.get_text()
+            match = re.search(r"\(?\d{3}\)?[\s.\-]*\d{3}[\s.\-]*\d{4}", text)
+            if match:
+                phone = match.group(0)
 
         # Find district from text like "District II" or "At-Large"
         district = ""
@@ -112,7 +123,7 @@ class ColumbiaAdapter(BaseAdapter):
                 district = "At-Large"
                 break
 
-        return (district, email)
+        return (district, email, phone)
 
     @staticmethod
     def _roman_to_arabic(roman: str) -> int:
