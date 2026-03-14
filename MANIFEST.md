@@ -22,13 +22,15 @@ call-your-rep/
 │   ├── state.py                   # OpenStates CSV download + scstatehouse.gov phone backfill
 │   ├── boundaries.py              # Census TIGER/Line + ArcGIS boundary downloader/simplifier
 │   ├── state_email_rules.py       # Per-state email format conventions for backfill
-│   └── adapters/                  # Per-site scraper adapters (~65 adapters)
+│   └── adapters/                  # Per-site scraper adapters (~68 files)
 │       ├── base.py                # Abstract base: fetch → parse → normalize → validate pipeline
 │       ├── civicplus.py           # Config-driven CivicPlus staff directory scraper (14 jurisdictions)
 │       ├── revize.py              # Marker-based parser for Revize CMS freeform pages (3 jurisdictions)
 │       ├── generic_mailto.py      # Extends RevizeAdapter for any mailto-heavy page (6 jurisdictions)
 │       ├── table_adapter.py       # Auto-detects table columns by header text (4 jurisdictions)
 │       ├── drupal_views.py        # Shared adapter for Drupal Views module sites (3 jurisdictions)
+│       ├── masc.py                # Municipal Association of SC directory fallback (5 cities)
+│       ├── scac.py                # SC Association of Counties directory fallback (3 counties)
 │       ├── greenville_county.py   # Custom two-page scraper with JS email deobfuscation
 │       ├── greenville_city.py     # CivicPlus headless CMS JSON API with JWT auth
 │       ├── bamberg_city.py        # CivicLive/ConnectSuite JSON API directory widget
@@ -67,4 +69,5 @@ call-your-rep/
 - `state.py` uses `state_email_rules.py` to fill missing emails from name-based conventions
 - `boundaries.py` reads boundary source configs from `registry.json` (both `stateBoundaries` and per-jurisdiction `boundary` blocks)
 - `base.py` provides `deobfuscate_cf_email()` and `normalize_phone()` utilities used across adapters
-- Coverage: 88/96 SC jurisdictions automated (91%), 8 remaining (all WAF-blocked or server errors)
+- `MascAdapter` and `ScacAdapter` provide fallback data for WAF-blocked municipal/county sites
+- Coverage: 96/96 SC jurisdictions automated (100%)
