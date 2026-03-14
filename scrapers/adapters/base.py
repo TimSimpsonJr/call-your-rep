@@ -46,6 +46,7 @@ class BaseAdapter(abc.ABC):
         self.id = entry["id"]
         self.url = entry.get("url", "")
         self.config = entry.get("adapterConfig", {})
+        self.warnings = []
 
     @abc.abstractmethod
     def fetch(self) -> str:
@@ -81,11 +82,17 @@ class BaseAdapter(abc.ABC):
 
         for i, record in enumerate(records):
             if not record.get("name"):
-                print(f"  WARNING: {self.id} record[{i}] has no name")
+                msg = f"{self.id} record[{i}] has no name"
+                print(f"  WARNING: {msg}")
+                self.warnings.append(msg)
             if not record.get("title"):
-                print(f"  WARNING: {self.id} record[{i}] ({record.get('name', '?')}) has no title")
+                msg = f"{self.id} record[{i}] ({record.get('name', '?')}) has no title"
+                print(f"  WARNING: {msg}")
+                self.warnings.append(msg)
             if not record.get("email") and not record.get("phone"):
-                print(f"  WARNING: {self.id} record[{i}] ({record.get('name', '?')}) has no email or phone")
+                msg = f"{self.id} record[{i}] ({record.get('name', '?')}) has no email or phone"
+                print(f"  WARNING: {msg}")
+                self.warnings.append(msg)
 
         return records
 

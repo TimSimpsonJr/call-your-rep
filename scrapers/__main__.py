@@ -278,7 +278,11 @@ def scrape_local(state_code, state_config, jurisdiction_filter=None, dry_run=Fal
                 f.write("\n")
 
             print(f"  Wrote {output_path}")
-            results[jid] = {"status": "ok", "members": len(members), "warnings": []}
+            results[jid] = {
+                "status": "warned" if adapter.warnings else "ok",
+                "members": len(members),
+                "warnings": adapter.warnings,
+            }
 
         except Exception as e:
             print(f"  ERROR scraping {jid}: {e}")
